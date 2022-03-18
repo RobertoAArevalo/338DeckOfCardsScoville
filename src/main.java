@@ -19,7 +19,8 @@ public class main {
    
    public Card (char value, Suit suit)
    {
-      
+      this.value = value;
+      this.suit = suit;
    
    }
    

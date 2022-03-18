@@ -17,6 +17,12 @@ public class main {
    private Suit suit;
    private boolean cardError;
    
+   public Card (char value, Suit suit)
+   {
+      
+   
+   }
+   
    
    */
    

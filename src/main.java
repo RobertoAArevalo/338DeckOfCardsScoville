@@ -26,7 +26,7 @@ public class main {
    
    public Card( )
    {
-      value = 
+      value = Card.SPADES;
    }
    
    

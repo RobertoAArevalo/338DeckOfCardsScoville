@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-//ali's token 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
-
-public class main {
-   ///ali test
-   ///ali test 2
-   //wuddup -dave
-   /// this is what is up
-   //Richard is here
-   
-=======
 public class main
 {
     public static void main(String[] args)
@@ -18,7 +7,6 @@ public class main
         /// this is what is up
         //Richard is here
 
->>>>>>> branch 'master' of https://github.com/RobertoAArevalo/338DeckOfCardsScoville.git
    /*
 
 
@@ -56,11 +44,6 @@ public class main
 
 }
 
-<<<<<<< HEAD
-//ali test 03/18/2022 2
-=======
 
    ///ali test
 
-
->>>>>>> branch 'master' of https://github.com/RobertoAArevalo/338DeckOfCardsScoville.git

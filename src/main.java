@@ -1,3 +1,13 @@
+/*
+Write a Java program: Deck of Cards
+March 23, 2022
+Roberto Arevalo
+Ali Bakr
+David Delacalzada
+Richard Garcia
+
+ */
+
 //Start of main()
 public class main
 {

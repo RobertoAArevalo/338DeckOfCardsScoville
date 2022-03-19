@@ -36,9 +36,10 @@ class main
     */
 
 
+        System.out.println("hello world");
+        System.out.println("Eclipse sucks");
+        System.out.println("IntelliJ is the way.");
 
-   System.out.println("Eclipse sucks");
-   System.out.println("hello world");
 
     }
 
@@ -47,4 +48,5 @@ class main
 
    ///ali testing IntelliJ push 031822
    ///ali testing IntelliJ pull 031822
+
 

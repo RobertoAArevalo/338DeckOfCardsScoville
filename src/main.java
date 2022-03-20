@@ -16,7 +16,7 @@ public class main
 
    }
 
-   //Start of Card class
+   //Start of Card class - Robert
    class Card
    {
 
@@ -42,14 +42,14 @@ public class main
 
    }
 
-   //Start of Hand class
+   //Start of Hand class - David
    class Hand
    {
 
 
    }
 
-   //Start of Deck class
+   //Start of Deck class  - Ali/Richard?
    class Deck
    {
 

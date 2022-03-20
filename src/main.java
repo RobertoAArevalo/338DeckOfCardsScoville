@@ -46,7 +46,6 @@ public class main
    class Hand
    {
 
-
    }
 
    //Start of Deck class  - Ali/Richard?
@@ -65,6 +64,35 @@ public class main
          }
       }
 
+      public void init(int numPacks)
+      {
+
+      }
+
+      public void shuffle()
+      {
+
+      }
+
+      public Card dealCard()
+      {
+
+      }
+
+      public int getTopCard()
+      {
+         return topCard;
+      }
+
+      public Card inspectCard(int k)
+      {
+
+      }
+
+      private static void allocateMasterPack()
+      {
+
+      }
    }
 
 }

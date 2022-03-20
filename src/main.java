@@ -52,6 +52,18 @@ public class main
    //Start of Deck class  - Ali/Richard?
    class Deck
    {
+      public final int MAX_CARDS = 312;
+      private static Card[] masterPack = new Card[52];
+      private Card[] cards;
+      private int topCard;
+
+      Deck(int numPacks)
+      {
+         if (numPacks == 0)
+         {
+            numPacks = 1;
+         }
+      }
 
    }
 

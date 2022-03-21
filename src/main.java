@@ -96,10 +96,15 @@ class Card
       this.suit = suit;
    }*/
 
+   
+   //uses equal method to compare the suit and value
+   //true or false from return statement
    public boolean equals(Card card)
    {
-
+      return ( (card.equals(card.suit)) && (value == card.value) );
    }
+   
+   
    private boolean isValid(char value,Suit suit)
    {
       if ((value == '2') || (value == '3') || (value == '4') || (value == '5')

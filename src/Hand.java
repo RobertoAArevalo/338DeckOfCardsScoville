@@ -61,7 +61,19 @@ public class Hand {
       }
       
       
-      
+      //this method returns last card of array or returns bad card error
+            public Card playCard()
+      {
+         
+         if(numCards == 0)
+         {
+            return System.out.println(""Bad Card" error");
+         }
+         else
+         {
+            return myCards[MAX_CARDS--];
+         }
+      }
       
       
       

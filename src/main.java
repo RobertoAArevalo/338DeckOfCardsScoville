@@ -53,7 +53,7 @@ public class main
    }
 
    //Start of Deck class  - Ali/Richard?
-   class Deck
+   /*class Deck
    {
       public final int MAX_CARDS = 312;
       private static Card[] masterPack = new Card[52];
@@ -97,6 +97,6 @@ public class main
       {
 
       }
-   }
+   }*/
 
 }

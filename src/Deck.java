@@ -1,8 +1,8 @@
 public class Deck
 {
    public final int MAX_CARDS = 312;
-   private static main.Card[] masterPack = new main.Card[52];
-   private main.Card[] cards;
+   private static final Card[] masterPack = new Card[52];
+   private Card[] cards;
    private int topCard;
 
    Deck(int numPacks)
@@ -15,7 +15,7 @@ public class Deck
 
    public void init(int numPacks)
    {
-
+      Card[] cards = new Card[numPacks * 52];
    }
 
    public void shuffle()

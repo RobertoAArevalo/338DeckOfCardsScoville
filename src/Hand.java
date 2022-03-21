@@ -45,5 +45,21 @@ public class Hand {
       public Card[] getMyCards()
       {
          return myCards;
+      }  
+      
+      //setter for numCards
+      public void setNumCards(int numCards)
+      {
+         this.numCards = numCards;
       }
+      
+      //getter for numCards
+      public int getNumCards()
+      {
+         return numCards;
+      }
+      
+      
+      
+      
 }

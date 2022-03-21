@@ -35,17 +35,24 @@ public class Hand {
          }
       }
       
-      //seeter for array
-      public void setMyCards(Card[] myCards)
-      {
-         this.myCards = myCards;
-      }
       
       //getter for array
       public Card[] getMyCards()
       {
          return myCards;
-      }  
+      } 
+      
+      //seeter for array
+      public void setMyCards(Card[] myCards)
+      {
+         this.myCards = myCards;
+      } 
+           
+      //getter for numCards
+      public int getNumCards()
+      {
+         return numCards;
+      }   
       
       //setter for numCards
       public void setNumCards(int numCards)
@@ -53,11 +60,7 @@ public class Hand {
          this.numCards = numCards;
       }
       
-      //getter for numCards
-      public int getNumCards()
-      {
-         return numCards;
-      }
+      
       
       
       

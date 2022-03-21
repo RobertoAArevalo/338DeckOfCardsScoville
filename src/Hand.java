@@ -34,4 +34,16 @@ public class Hand {
             return true;
          }
       }
+      
+      //seeter for array
+      public void setMyCards(Card[] myCards)
+      {
+         this.myCards = myCards;
+      }
+      
+      //getter for array
+      public Card[] getMyCards()
+      {
+         return myCards;
+      }
 }

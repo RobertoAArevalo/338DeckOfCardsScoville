@@ -7,6 +7,8 @@ public class Deck
 
    Deck(int numPacks)
    {
+      cards = new Card[Card.getSuits().length * (Card.getMaxRank() - Card.getMinRank() + 1)];
+      masterPack = masterPack[52 * numPacks];
       if (numPacks == 0)
       {
          numPacks = 1;

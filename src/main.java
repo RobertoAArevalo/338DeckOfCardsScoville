@@ -1,10 +1,12 @@
 /*
 Write a Java program: Deck of Cards
 March 23, 2022
-Roberto Arevalo
-Ali Bakr
-David Delacalzada
-Richard Garcia
+@author Roberto Arevalo
+@author Ali Bakr
+@author David Delacalzada
+@author Richard Garcia
+@version 1.3
+ */
 
  */
 
@@ -17,12 +19,14 @@ public class main
    }
 
    //Start of Card class - Robert
-   class Card
+   public class Card
    {
 
-      enum Suit
+      public enum Suit
       {
-         HEARTS, DIAMONDS, CLUBS, SPADES, private char value;
+         HEARTS, DIAMONDS, CLUBS, SPADES
+      };
+         private char value;
          private Suit suit;
          private boolean cardError;
 

@@ -97,7 +97,7 @@ class Card
    }*/
 
    
-   //uses equal method to compare the suit and value
+   //uses equal method to compare the suit and == method to compare value
    //true or false from return statement
    public boolean equals(Card card)
    {

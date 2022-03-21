@@ -75,5 +75,20 @@ public class Hand {
       }
       
       
+      //takes card as parameter to check for out of bounds
+      //THIS ONE IS NOT DONE needs to return cardError = true when k is out of bounds
+      //this one just returns simple print statement
+      public Card inspectCard(int k)
+      {
+            
+         if(k < 0 || k > numCards) 
+         {
+            return System.out.println("out of bounds error")
+         }
+         else
+         {
+            return myCards[k];
+         }
+      }
       
 }

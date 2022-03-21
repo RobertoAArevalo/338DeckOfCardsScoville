@@ -7,8 +7,9 @@ March 23, 2022
 @author Richard Garcia
 @version 1.3
  */
-
- */
+import java.util.*;
+import java.util.Objects;
+import java.lang.Math;
 
 //Start of main()
 public class main
@@ -38,17 +39,52 @@ class Card
    //private static final int MIN_VALUE = 1;
    //private static final int MAX_VALUE = 13;
 
-         public Card(char value, Suit suit)
-         {
-            this.value = value;
-            this.suit = suit;
+   public Card(char value, Suit suit)
+   {
+      //Card.set()
 
-         }
+      this.value = value;
+      this.suit = suit;
+   }
 
-         public Card()
-         {
-            value = Card.SPADES;
-         }
+   public Card();
+   {
+
+
+   }
+
+   //constructor 2
+   public Card(Card origCard)
+   {
+      //origCard = Suit();
+      this.value = origCard.value;
+      this.suit = origCard.suit;
+   }
+
+   public String toString()
+   {
+      if(cardError == true)
+      {
+         return "Invalid";
+      }
+      else
+         return "Valid";
+   }
+   public boolean set(char value, Suit suit)
+   {
+      if ()
+         return true;
+      return false;
+
+   }
+   public char getValue()
+   {
+      return value;
+   }
+   /*public char setValue(char value)//mutators(setters)
+   {
+      this.value = value;
+   }*/
 
    public Suit getSuit()
    {
@@ -127,6 +163,7 @@ class Hand
       public Card inspectCard(int k)
       {
 
+
       }
 
       private static void allocateMasterPack()
@@ -153,4 +190,3 @@ class Hand
 //        return (x + y);
 //    }
 
-}

@@ -1,9 +1,14 @@
+import java.util.*;
+import java.lang.Math;
+import java.util.*;
+import java.lang.Math;
 public class Deck
 {
    public final int MAX_CARDS = 312;
-   private static final Card[] masterPack = new Card[52];
+   private static final5 Card[] masterPack = new Card[52];
    private Card[] cards;
    private int topCard;
+
 
    Deck(int numPacks)
    {
@@ -22,6 +27,17 @@ public class Deck
 
    public void shuffle()
    {
+      Random pullcard = new Random();
+      int i = 0;
+
+      for (i = cards.length - 1; i > 0; i--)
+      {
+         int j = pullcard.nextInt(i+1);
+         Card temp = cards[j];
+         cards[j] = cards[i];
+         cards[i] = temp;
+         //Card[] newCards = new Card[i];
+      }
 
    }
 

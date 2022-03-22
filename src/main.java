@@ -298,6 +298,16 @@ class Deck//going to contain outputs
 
    public Card dealCard()
    {
+      int index = cards.length;
+
+      if (index == 0)
+      {
+         while (index > 0)
+         {
+            return cards[index];
+            index--;
+         }
+      }
 
 
    }

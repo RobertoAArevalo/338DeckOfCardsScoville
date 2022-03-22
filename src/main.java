@@ -70,13 +70,25 @@ class Card
       else
          return "Valid";
    }
+   
+   
+   //uses isValid method to validate value and suit
+   //returns false if good values are passed
    public boolean set(char value, Suit suit)
    {
-      if ()
-         return true;
-      return false;
-
+      if (isValid(value, suit)
+          {
+             cardError = false;
+             return cardError;
+          }
+          else
+          {
+             cardError = true;
+             return cardError;
+          }
    }
+          
+          
    public char getValue()
    {
       return value;

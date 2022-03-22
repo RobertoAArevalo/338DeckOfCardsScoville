@@ -330,16 +330,15 @@ class Deck//going to contain outputs
 
    private static void allocateMasterPack()
    {
+      //some variables used in method
       int r = 1; //r for rank
-
-      Card.Suit suit;
+      Card.Suit suit;    
       
       //if cutRibbon is true method exits
       if (!cutRibbon)
       {
          return;
-      }
-    
+      }  
          !cutRibbon; //changes cutRibbon to false to mark first run
       
       // if masterPack is empty build it
@@ -353,14 +352,12 @@ class Deck//going to contain outputs
       //s is for suit
       for(int s = 0, s < 4, s++)
       {        
-         suit = Card.Suit.values()[s]   //use values() to pull enum values
-         
+         suit = Card.Suit.values()[s]   //use values() to pull enum values        
          for(int i = 0, i < 13, i++)
          {
             masterPack[i] = new Card(suit, r);
             r++
-         }
-         
+         }        
       }
       
       //loop for char value & loop for Suit suit

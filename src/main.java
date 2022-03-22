@@ -180,7 +180,7 @@ class Hand
          int counter = MAX_CARDS;
          if(numCards == 0)
          {
-            return System.out.println("'Bad Card' error");
+            return System.out.println("no more cards");
          }
          else
          {

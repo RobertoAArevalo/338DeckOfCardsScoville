@@ -235,7 +235,20 @@ class Hand
       }
       else
       {
+<<<<<<< HEAD
          return myCards[k];
+=======
+           
+         if(k < 0 || k > numCards) 
+         {
+            System.out.println("out of bounds error")
+            return card.cardError();
+         }
+         else
+         {
+            return myCards[k];
+         }
+>>>>>>> origin/master
       }
    }
 

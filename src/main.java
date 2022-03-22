@@ -223,10 +223,11 @@ class Hand
       //this one just returns simple print statement
       public Card inspectCard(int k)
       {
-            
+           
          if(k < 0 || k > numCards) 
          {
-            return System.out.println("out of bounds error")
+            System.out.println("out of bounds error")
+            return Card.cardError();
          }
          else
          {

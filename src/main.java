@@ -7,6 +7,7 @@ March 23, 2022
 @author Richard Garcia
 @version 1.3
  */
+
 import java.util.*;
 import java.util.Objects;
 import java.lang.Math;
@@ -17,10 +18,11 @@ public class main
    public static void main(String[] args)
    {
       Card card1 = new Card();
-      Card card2 = new Card('7',Card.Suit.HEARTS);
+      Card card2 = new Card('7', Card.Suit.HEARTS);
    }
 
 }
+
 class Card
 {
    //String str = "A","2","3","4","5","6","7","8","9","10",
@@ -42,19 +44,22 @@ class Card
 
    public Card(char value, Suit suit)
    {
-      set(value,suit);
+      set(value, suit);
    }
+
    public Card()//default constructor
    {
-      set('A',Suit.SPADES);
+      set('A', Suit.SPADES);
    }
+
    public Card(Card origCard)
    {
-      set(origCard.value,origCard.suit);
+      set(origCard.value, origCard.suit);
    }
+
    public String toString()
    {
-      if(cardError == true)
+      if (cardError == true)
       {
          return "** illegal **";
       }
@@ -62,9 +67,10 @@ class Card
          return suit + " " + value;//
 
    }
+
    public boolean set(char value, Suit suit)//mutator
    {
-      if (isValid(value,suit) == true)
+      if (isValid(value, suit) == true)
       {
          this.value = value;
          this.suit = suit;
@@ -74,6 +80,7 @@ class Card
       cardError = false;
       return false;
    }
+
    public char getValue()//accessors
    {
       return value;
@@ -87,6 +94,7 @@ class Card
    {
       return suit;
    }
+
    public boolean cardError()
    {
       return cardError;
@@ -98,17 +106,18 @@ class Card
 
    public boolean equals(Card otherCard)
    {
-      if(suit == otherCard.getSuit() && value == otherCard.getValue() &&
-         cardError == otherCard.cardError() )
+      if (suit == otherCard.getSuit() && value == otherCard.getValue() &&
+         cardError == otherCard.cardError())
          return true;
       return false;
    }
-   private boolean isValid(char value,Suit suit)
+
+   private boolean isValid(char value, Suit suit)
    {
-      if ((value == '2') || (value == '3') || (value == '4') || (value == '5')
-         || (value == '6') || (value == '7') || (value == '8') ||
-         (value == '9') || (value == 'T') || (value == 'J') || (value == 'Q')
-         || (value == 'K') || (value == 'A'))
+      if ((value == '2') || (value == '3') || (value == '4') ||
+         (value == '5') || (value == '6') || (value == '7') || (value == '8') ||
+         (value == '9') || (value == 'T') || (value == 'J') || (value == 'Q') ||
+         (value == 'K') || (value == 'A'))
       {
          return true;
       }
@@ -123,150 +132,147 @@ class Card
 
 //Start of Hand class - David
 class Hand
-{ 
+{
    //series of variables used
-      public final int MAX_CARDS = 75;
-      private Card[] myCards;
-      private int numCards;
-      
-      //initializes integer numCards and array myCards
-      public Hand()
+   public final int MAX_CARDS = 75;
+   private Card[] myCards;
+   private int numCards;
+
+   //initializes integer numCards and array myCards
+   public Hand()
+   {
+      numCards = 0;
+      myCards = new Card[MAX_CARDS];
+   }
+
+   //resets numCards and myCards by overwiting with initial values
+   public void resetHand()
+   {
+      numCards = 0;
+      myCards = new Card[MAX_CARDS];
+   }
+
+   //adds a card to the array myCards
+   public boolean takeCard(Card card)
+   {
+      if (numCards >= MAX_CARDS)
       {
-         numCards = 0;
-         myCards = new Card[MAX_CARDS];
+         System.out.println("Error: Adding to a full array.");
+         return false;
       }
-      
-      //resets numCards and myCards by overwiting with initial values
-      public void resetHand()
+      else
       {
-         numCards = 0;
-         myCards = new Card[MAX_CARDS];
+         myCards[numCards] = card;
+         numCards++;
+         return true;
       }
-      
-      //adds a card to the array myCards
-      public boolean takeCard(Card card)
+   }
+
+   //this method returns last card of array or returns bad card error
+   public Card playCard()
+   {
+      int counter = MAX_CARDS;
+      if (numCards == 0)
       {
-         if(numCards >= MAX_CARDS)
-         {
-            System.out.println("Error: Adding to a full array.");
-            return false;
-         }
-         else
-         {
-            myCards[numCards] = card;
-            numCards++;
-            return true;
-         }
+         return System.out.println("no more cards");
       }
-      
-      
-      //this method returns last card of array or returns bad card error
-      public Card playCard()
-      {     
-         int counter = MAX_CARDS;
-         if(numCards == 0)
-         {
-            return System.out.println("no more cards");
-         }
-         else
-         {
-            return myCards[counter--];
-         }
+      else
+      {
+         return myCards[counter--];
       }
-         
-      
-      //toString method to display hand
-      public string toString()
+   }
+
+   //toString method to display hand
+   public String toString()
+   {
+      String userHand = "Hand = ( ";
+      for (int i = 0; i < numCards; i++)
       {
-         String userHand = "Hand = ( ";
-         for (int i = 0, i < numCards, i++)
+         while (i < numCards - 1)
          {
-            while (i < numCards - 1)
-            {
-               userHand = userHand + myCards[i];
-               userHand =+ ", ";
-            }
-         
-            userHand =+ " )";   
+            userHand = userHand + myCards[i];
+            userHand = + ", ";
          }
-         return userHand;
+
+         userHand = +" )";
       }
-      
-      
-      //getter for array
-      public Card[] getMyCards()
+      return userHand;
+   }
+
+   //getter for array
+   public Card[] getMyCards()
+   {
+      return myCards;
+   }
+
+   //seeter for array
+   public void setMyCards(Card[] myCards)
+   {
+      this.myCards = myCards;
+   }
+
+   //getter for numCards
+   public int getNumCards()
+   {
+      return numCards;
+   }
+
+   //setter for numCards
+   public void setNumCards(int numCards)
+   {
+      this.numCards = numCards;
+   }
+
+   //takes card as parameter to check for out of bounds
+   //THIS ONE IS NOT DONE needs to return cardError = true when k is out of bounds
+   //this one just returns simple print statement
+   public Card inspectCard(int k)
+   {
+
+      if (k < 0 || k > numCards)
       {
-         return myCards;
-      } 
-      
-      //seeter for array
-      public void setMyCards(Card[] myCards)
-      {
-         this.myCards = myCards;
-      } 
-           
-      //getter for numCards
-      public int getNumCards()
-      {
-         return numCards;
-      }   
-      
-      //setter for numCards
-      public void setNumCards(int numCards)
-      {
-         this.numCards = numCards;
+         return System.out.println("out of bounds error")
       }
-       
-      
-      //takes card as parameter to check for out of bounds
-      //THIS ONE IS NOT DONE needs to return cardError = true when k is out of bounds
-      //this one just returns simple print statement
-      public Card inspectCard(int k)
+      else
       {
-            
-         if(k < 0 || k > numCards) 
-         {
-            return System.out.println("out of bounds error")
-         }
-         else
-         {
-            return myCards[k];
-         }
+         return myCards[k];
       }
-   
-    
-   
-//end of hand class 
+   }
+
+   //end of hand class
 }
 
 //Start of Deck class  - Ali/Richard?
 class Deck//going to contain outputs
 {
    public static final int MAX_CARDS = 312;
-   private static Card [] masterPack = new Card [52];
+   private static Card[] masterPack = new Card[52];
 
-   private static Card [] cards;
+   private static Card[] cards;
    private static int topCard;
 
    public Deck(int numPacks)
    {
       allocateMasterPack();
    }
+
    public Deck()
    {
       // numpacks1
    }
+
    public void init(int numPacks)
    {
 
    }
+
    public void shuffle()
    {
       int i = 0;
       Random pullcard = new Random();
       for (i = cards.length - 1; i > 0; i--)
       {
-         int j = pullcard.nextInt(i+1);
+         int j = pullcard.nextInt(i + 1);
          Card temp = cards[i];
          cards[j] = cards[i];
          cards[i] = temp;
@@ -274,18 +280,22 @@ class Deck//going to contain outputs
       }
 
    }
+
    public Card dealCard()
    {
 
    }
+
    public int getTopCard()
    {
       return topCard;
    }
+
    public Card inspectCard(int k)
    {
 
    }
+
    private static void allocateMasterPack()
    {
       // if masterPack is empty build it

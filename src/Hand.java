@@ -61,6 +61,20 @@ public class Hand {
       }
       
       
+      //toString method to display hand
+      public toString()
+      {
+      StringTokenizer breakDown = new StringTokenizer(myCards);
+      int agg = 0;                 
+      while(breakDown.hasMoreTokens())
+      {
+            agg = agg +
+            Integer.parseInt(breakDown.nextToken());
+         }
+         System.out.printf("Hand = ( ", agg);      
+      }
+      
+      
       //this method returns last card of array or returns bad card error
       public Card playCard()
       {     

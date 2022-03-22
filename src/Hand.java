@@ -38,6 +38,38 @@ public class Hand {
       }
       
       
+      //this method returns last card of array or returns bad card error
+      public Card playCard()
+      {     
+         if(numCards == 0)
+         {
+            return System.out.println(""Bad Card" error");
+         }
+         else
+         {
+            return myCards[MAX_CARDS--];
+         }
+      }
+         
+      
+      //toString method to display hand
+      public String toString()
+      {
+         String userHand = "Hand = ( ";
+         for (int i = 0, i < numCards, i++)
+         {
+            while (i < numCards - 1)
+            {
+               userHand = userHand + myCards[i];
+               userHand =+ ", ";
+            }
+         
+            userHand =+ " )";   
+         }
+         return userHand;
+      }
+      
+      
       //getter for array
       public Card[] getMyCards()
       {
@@ -61,39 +93,7 @@ public class Hand {
       {
          this.numCards = numCards;
       }
-      
-      
-      //toString method to display hand
-      public String toString()
-      {
-         String userHand = "Hand = ( ";
-         for (int i = 0, i < numCards, i++)
-         {
-            while (i < numCards - 1)
-            {
-               userHand = userHand + myCards[i];
-               userHand =+ ", ";
-            }
-         
-            userHand =+ " )";   
-         }
-         return userHand;
-      }
-      
-      
-      //this method returns last card of array or returns bad card error
-      public Card playCard()
-      {     
-         if(numCards == 0)
-         {
-            return System.out.println(""Bad Card" error");
-         }
-         else
-         {
-            return myCards[MAX_CARDS--];
-         }
-      }
-      
+       
       
       //takes card as parameter to check for out of bounds
       //THIS ONE IS NOT DONE needs to return cardError = true when k is out of bounds

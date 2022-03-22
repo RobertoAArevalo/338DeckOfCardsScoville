@@ -64,11 +64,20 @@ public class Hand {
       
       
       //toString method to display hand
-      public toString()
+      public String toString()
       {
-          System.out.print("Hand = ( ");
-          for (int element: array) {
-            System.out.print(element);      
+         String userHand = "Hand = ( ";
+         for (int i = 0, i < numCards, i++)
+         {
+            while (i < numCards - 1)
+            {
+               userHand = userHand + myCards[i];
+               userHand =+ ", ";
+            }
+         
+            userHand =+ " )";   
+         }
+         return userHand;
       }
       
       

@@ -42,7 +42,7 @@ public class Hand {
       {     
          if(numCards == 0)
          {
-            return System.out.println(""Bad Card" error");
+            return System.out.println("'Bad Card' error");
          }
          else
          {

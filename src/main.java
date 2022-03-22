@@ -189,7 +189,7 @@ class Hand
          
       
       //toString method to display hand
-      public String toString()
+      public string toString()
       {
          String userHand = "Hand = ( ";
          for (int i = 0, i < numCards, i++)

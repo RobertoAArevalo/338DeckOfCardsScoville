@@ -302,6 +302,7 @@ class Deck//going to contain outputs
 
       if (index == 0)
       {
+         return cards[index]; //not sure about this
          while (index > 0)
          {
             return cards[index];

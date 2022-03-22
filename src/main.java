@@ -332,7 +332,7 @@ class Deck//going to contain outputs
    {
       int r = 1; //r for rank
 
-      Card.Suit Suit;
+      Card.Suit suit;
       
       //if cutRibbon is true method exits
       if (!cutRibbon)
@@ -357,7 +357,7 @@ class Deck//going to contain outputs
          
          for(int i = 0, i < 13, i++)
          {
-            masterPack[i] = new Card(s, r);
+            masterPack[i] = new Card(suit, r);
             r++
          }
          

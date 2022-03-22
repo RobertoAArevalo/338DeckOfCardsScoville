@@ -186,8 +186,6 @@ class Hand
    public String toString()
    {
       String userHand = "Hand = ( ";
-      for (int i = 0; i < numCards; i++)
-      {
          while (i < myCards.length)
          {
             userHand = userHand + myCards[i];
@@ -195,7 +193,6 @@ class Hand
          }
 
          userHand = +" )";
-      }
       return userHand;
    }
 
@@ -249,6 +246,7 @@ class Deck//going to contain outputs
 {
    public static final int MAX_CARDS = 312;
    private static Card[] masterPack = new Card[52];
+   private static boolean cutRibbon = true;
 
    private Card[] cards;
    private int topCard;
@@ -332,12 +330,47 @@ class Deck//going to contain outputs
 
    private static void allocateMasterPack()
    {
+      int r = 1; //r for rank
+
+      Card.Suit Suit;
+      
+      //if cutRibbon is true method exits
+      if (!cutRibbon)
+      {
+         return;
+      }
+    
+         !cutRibbon; //changes cutRibbon to false to mark first run
+      
       // if masterPack is empty build it
+      if(cards == null)
+      {
+         masterPack = new Card[MAX_CARDS];
+      }
       // not empty do nothing
+         
       // 2 nested loops to build the deck
+      //s is for suit
+      for(int s = 0, s < 4, s++)
+      {        
+         suit = Card.Suit.values()[i]   //use values() to pull enum values
+         
+         for(int i = 0, i < 13, i++)
+         {
+            masterPack[i] = new Card(s, r);
+            r++
+         }
+         
+      }
+      
       //loop for char value & loop for Suit suit
+      
+      
+      
 
    }
+   
+//end of deck class
 }
 
 //// Overloaded sum(). This sum takes two int parameters

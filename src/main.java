@@ -113,7 +113,7 @@ class Card
    //true or false from return statement
    public boolean equals(Card card)
    {
-      return ( (card.equals(card.suit)) && (value == card.value) );
+      return ( (card.equals(Suit.suit)) && (value == card.value) );
    }
    
    
@@ -180,7 +180,7 @@ class Hand
          int counter = MAX_CARDS;
          if(numCards == 0)
          {
-            return System.out.println("'Bad Card' error");
+            return System.out.println("no more cards");
          }
          else
          {

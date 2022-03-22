@@ -1,7 +1,6 @@
 
 public class Hand {
-      
-      //series of variables used
+//series of variables used
       public final int MAX_CARDS = 75;
       private Card[] myCards;
       private int numCards;
@@ -40,19 +39,20 @@ public class Hand {
       //this method returns last card of array or returns bad card error
       public Card playCard()
       {     
+         int counter = MAX_CARDS;
          if(numCards == 0)
          {
-            return System.out.println("'Bad Card' error");
+            return System.out.println("no more cards");
          }
          else
          {
-            return myCards[MAX_CARDS--];
+            return myCards[counter--];
          }
       }
          
       
       //toString method to display hand
-      public String toString()
+      public string toString()
       {
          String userHand = "Hand = ( ";
          for (int i = 0, i < numCards, i++)
@@ -109,5 +109,9 @@ public class Hand {
             return myCards[k];
          }
       }
+   
+    
+   
+//end of hand class 
       
 }

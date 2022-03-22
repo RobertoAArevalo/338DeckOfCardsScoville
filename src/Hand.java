@@ -1,3 +1,5 @@
+import.java.util.*;
+
 public class Hand {
       
       //series of variables used

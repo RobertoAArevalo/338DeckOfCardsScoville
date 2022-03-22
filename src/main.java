@@ -16,107 +16,93 @@ public class main
 {
    public static void main(String[] args)
    {
-
+      Card card1 = new Card();
+      Card card2 = new Card('7',Card.Suit.HEARTS);
    }
 
 }
-
-//Start of Card class - Robert
 class Card
 {
    //String str = "A","2","3","4","5","6","7","8","9","10",
    public enum Suit
    {
-      HEARTS, DIAMONDS, CLUBS, SPADES;
+      //clubs, diamonds, hearts, spades;
+      //private char value;
+      //private Suit suit;
+      SPADES, HEARTS, DIAMONDS, CLUBS;
+
    }
 
+   //private static final int MIN_RANK = 1;
+   //private static final int MAX_RANK = 13;
 
-   //for values of the cards
    private char value;
    private Suit suit;
-   private boolean cardError; // for reporting illegal state
-
-   //private static final int MIN_VALUE = 1;
-   //private static final int MAX_VALUE = 13;
+   private boolean cardError;
 
    public Card(char value, Suit suit)
    {
-      //Card.set()
-
-      this.value = value;
-      this.suit = suit;
+      set(value,suit);
    }
-
-   public Card();
+   public Card()//default constructor
    {
-
-
+      set('A',Suit.SPADES);
    }
-
-   //constructor 2
    public Card(Card origCard)
    {
-      //origCard = Suit();
-      this.value = origCard.value;
-      this.suit = origCard.suit;
+      set(origCard.value,origCard.suit);
    }
-
    public String toString()
    {
       if(cardError == true)
       {
-         return "Invalid";
+         return "** illegal **";
       }
       else
-         return "Valid";
+         return suit + " " + value;//
+
    }
-   
-   
-   //uses isValid method to validate value and suit
-   //returns false if good values are passed
-   public boolean set(char value, Suit suit)
+   public boolean set(char value, Suit suit)//mutator
    {
-      if (isValid(value, suit)
-          {
-             cardError = false;
-             return cardError;
-          }
-          else
-          {
-             cardError = true;
-             return cardError;
-          }
+      if (isValid(value,suit) == true)
+      {
+         this.value = value;
+         this.suit = suit;
+         cardError = true;
+         return true;
+      }
+      cardError = false;
+      return false;
    }
-          
-          
-   public char getValue()
+   public char getValue()//accessors
    {
       return value;
    }
-   /*public char setValue(char value)//mutators(setters)
-   {
-      this.value = value;
-   }*/
+    /*public char setValue(char value)//mutators(setters)
+    {
+       this.value = value;
+    }*/
 
    public Suit getSuit()
    {
       return suit;
    }
-
-   /*public boolean setSuit(Suit suit)//mutators(setters)
+   public boolean cardError()
    {
-      this.suit = suit;
-   }*/
-
-   
-   //uses equal method to compare the suit and == method to compare value
-   //true or false from return statement
-   public boolean equals(Card card)
-   {
-      return ( (card.equals(Suit.suit)) && (value == card.value) );
+      return cardError;
    }
-   
-   
+    /*public boolean setSuit(Suit suit)//mutators(setters)
+    {
+       this.suit = suit;
+    }*/
+
+   public boolean equals(Card otherCard)
+   {
+      if(suit == otherCard.getSuit() && value == otherCard.getValue() &&
+         cardError == otherCard.cardError() )
+         return true;
+      return false;
+   }
    private boolean isValid(char value,Suit suit)
    {
       if ((value == '2') || (value == '3') || (value == '4') || (value == '5')
@@ -254,52 +240,61 @@ class Hand
 }
 
 //Start of Deck class  - Ali/Richard?
-   /*class Deck
+class Deck//going to contain outputs
+{
+   public static final int MAX_CARDS = 312;
+   private static Card [] masterPack = new Card [52];
+
+   private static Card [] cards;
+   private static int topCard;
+
+   public Deck(int numPacks)
    {
-      public final int MAX_CARDS = 312;
-      private static Card[] masterPack = new Card[52];
-      private Card[] cards;
-      private int topCard;
+      allocateMasterPack();
+   }
+   public Deck()
+   {
+      // numpacks1
+   }
+   public void init(int numPacks)
+   {
 
-      Deck(int numPacks)
+   }
+   public void shuffle()
+   {
+      int i = 0;
+      Random pullcard = new Random();
+      for (i = cards.length - 1; i > 0; i--)
       {
-         if (numPacks == 0)
-         {
-            numPacks = 1;
-         }
+         int j = pullcard.nextInt(i+1);
+         Card temp = cards[i];
+         cards[j] = cards[i];
+         cards[i] = temp;
+         //Card[] newCards = new Card[i];
       }
 
-      public void init(int numPacks)
-      {
+   }
+   public Card dealCard()
+   {
 
-      }
+   }
+   public int getTopCard()
+   {
+      return topCard;
+   }
+   public Card inspectCard(int k)
+   {
 
-      public void shuffle()
-      {
+   }
+   private static void allocateMasterPack()
+   {
+      // if masterPack is empty build it
+      // not empty do nothing
+      // 2 nested loops to build the deck
+      //loop for char value & loop for Suit suit
 
-      }
-
-      public Card dealCard()
-      {
-
-      }
-
-      public int getTopCard()
-      {
-         return topCard;
-      }
-
-      public Card inspectCard(int k)
-      {
-
-
-      }
-
-      private static void allocateMasterPack()
-      {
-
-      }
-   }*/
+   }
+}
 
 //// Overloaded sum(). This sum takes two int parameters
 //    public int sum(int x, int y)

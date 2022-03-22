@@ -134,7 +134,7 @@ class Card
 class Hand
 {
    //series of variables used
-   public final int MAX_CARDS = 75;
+   public final int MAX_CARDS = 75;  //range is from 50 - 100
    private Card[] myCards;
    private int numCards;
 
@@ -229,27 +229,16 @@ class Hand
    public Card inspectCard(int k)
    {
 
-      if (k < 0 || k > numCards)
-      {
-         return System.out.println("out of bounds error");
-      }
-      else
-      {
-<<<<<<< HEAD
-         return myCards[k];
-=======
-           
+         Boolean cardError = false;
          if(k < 0 || k > numCards) 
          {
-            System.out.println("out of bounds error");
-            return card.cardError();
+            System.out.println("out of bounds error");           
+            return !cardError;
          }
          else
          {
             return myCards[k];
          }
->>>>>>> origin/master
-      }
    }
 
    //end of hand class
@@ -318,9 +307,27 @@ class Deck//going to contain outputs
       return topCard;
    }
 
+   //same as the inspecCard class from hand
+   //but added the object copy if k is out of bounds
+   //returns true and object copy
    public Card inspectCard(int k)
    {
-
+         Boolean cardError = false;
+         private int copyK = 0;
+         
+         if(k < 0 || k > numCards) 
+         {
+            System.out.println("out of bounds error");
+            
+            //object copy
+            copyK = new Card(int k); 
+            
+            return !cardError + copyK;
+         }
+         else
+         {
+            return myCards[k];
+         }
    }
 
    private static void allocateMasterPack()

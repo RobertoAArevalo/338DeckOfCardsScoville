@@ -227,7 +227,7 @@ class Hand
          if(k < 0 || k > numCards) 
          {
             System.out.println("out of bounds error")
-            return Card.cardError();
+            return card.cardError();
          }
          else
          {

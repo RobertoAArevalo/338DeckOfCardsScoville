@@ -1,4 +1,4 @@
-
+/*
 public class Hand {
 //series of variables used
       public final int MAX_CARDS = 75;
@@ -102,7 +102,7 @@ public class Hand {
             
          if(k < 0 || k > numCards) 
          {
-            return System.out.println("out of bounds error")
+            return System.out.println("out of bounds error");
          }
          else
          {

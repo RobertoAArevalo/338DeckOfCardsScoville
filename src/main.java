@@ -241,7 +241,7 @@ class Hand
            
          if(k < 0 || k > numCards) 
          {
-            System.out.println("out of bounds error")
+            System.out.println("out of bounds error");
             return card.cardError();
          }
          else
@@ -261,31 +261,33 @@ class Deck//going to contain outputs
    public static final int MAX_CARDS = 312;
    private static Card[] masterPack = new Card[52];
 
-   private static Card[] cards;
-   private static int topCard;
+   private Card[] cards;
+   private int topCard;
 
    public Deck(int numPacks)
    {
+      Card[] cards = new Card[numPacks * 52];
       allocateMasterPack();
    }
 
    public Deck()
    {
-      // numpacks1
+      int numPacks = 1;
+      Card[] cards = new Card[numPacks * 52];
    }
 
    public void init(int numPacks)
    {
-
+      Card[] cards = new Card[numPacks * 52];
    }
 
    public void shuffle()
    {
       int i = 0;
-      Random pullcard = new Random();
+      Random pullCard = new Random();
       for (i = cards.length - 1; i > 0; i--)
       {
-         int j = pullcard.nextInt(i + 1);
+         int j = pullCard.nextInt(i + 1);
          Card temp = cards[i];
          cards[j] = cards[i];
          cards[i] = temp;
@@ -296,6 +298,7 @@ class Deck//going to contain outputs
 
    public Card dealCard()
    {
+
 
    }
 

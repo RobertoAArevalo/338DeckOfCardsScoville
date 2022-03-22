@@ -188,7 +188,7 @@ class Hand
       String userHand = "Hand = ( ";
       for (int i = 0; i < numCards; i++)
       {
-         while (i < numCards - 1)
+         while (i < myCards.length)
          {
             userHand = userHand + myCards[i];
             userHand = + ", ";

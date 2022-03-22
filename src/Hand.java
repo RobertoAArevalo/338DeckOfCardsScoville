@@ -55,7 +55,7 @@ public class Hand {
       public string toString()
       {
          String userHand = "Hand = ( ";
-         for (int i = 0, i < numCards, i++)
+         for (int i = 0; i < numCards; i++)
          {
             while (i < numCards - 1)
             {
@@ -115,3 +115,5 @@ public class Hand {
 //end of hand class 
       
 }
+
+*/

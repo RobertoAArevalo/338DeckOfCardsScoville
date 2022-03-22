@@ -74,7 +74,7 @@ class Card
     /*public char setValue(char value)//mutators(setters)
     {
        this.value = value;
-    }*/
+    }
 
     public Suit getSuit()
     {
@@ -87,7 +87,7 @@ class Card
     /*public boolean setSuit(Suit suit)//mutators(setters)
     {
        this.suit = suit;
-    }*/
+    }
 
     public boolean equals(Card otherCard)
     {

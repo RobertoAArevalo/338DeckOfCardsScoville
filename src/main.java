@@ -353,7 +353,7 @@ class Deck//going to contain outputs
       //s is for suit
       for(int s = 0, s < 4, s++)
       {        
-         suit = Card.Suit.values()[i]   //use values() to pull enum values
+         suit = Card.Suit.values()[s]   //use values() to pull enum values
          
          for(int i = 0, i < 13, i++)
          {

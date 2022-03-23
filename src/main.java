@@ -139,15 +139,15 @@ class Hand
    //initializes integer numCards and array myCards
    public Hand()
    {
-      numCards = 0;
+      this.numCards = 0;
       myCards = new Card[MAX_CARDS];
    }
 
    //resets numCards and myCards by overwiting with initial values
    public void resetHand()
    {
-      numCards = 0;
-      myCards = new Card[MAX_CARDS];
+      this.numCards = 0;
+      this.myCards = new Card[MAX_CARDS];
    }
 
    //adds a card to the array myCards
@@ -160,7 +160,8 @@ class Hand
       }
       else
       {
-         myCards[numCards] = card;
+         Card copy = new Card(card);
+         myCards[numCards] = copy;
          numCards++;
          return true;
       }
@@ -169,14 +170,17 @@ class Hand
    //this method returns last card of array or returns bad card error
    public Card playCard()
    {
-      int counter = MAX_CARDS;
+      //int counter = MAX_CARDS;
+      int index = myCards.length;
+
       if (numCards == 0)
       {
-         return System.out.println("no more cards");
+         System.out.println("no more cards");
       }
       else
       {
-         return myCards[counter--];
+         return myCards[index];
+         index--;
       }
    }
 
@@ -184,13 +188,16 @@ class Hand
    public String toString()
    {
       String userHand = "Hand = ( ";
-         while (i < myCards.length)
+      for (int i = 0; i < numCards; i++)
+      {
+         while (i < numCards - 1)
          {
             userHand = userHand + myCards[i];
-            userHand = + ", ";
+            userHand += ", ";
          }
 
-         userHand = +" )";
+         userHand += " )";
+      }
       return userHand;
    }
 
@@ -201,10 +208,10 @@ class Hand
    }
 
    //seeter for array
-   public void setMyCards(Card[] myCards)
+   /*public void setMyCards(Card[] myCards)
    {
       this.myCards = myCards;
-   }
+   }*/
 
    //getter for numCards
    public int getNumCards()
@@ -213,18 +220,33 @@ class Hand
    }
 
    //setter for numCards
-   public void setNumCards(int numCards)
+   /*public void setNumCards(int numCards)
    {
       this.numCards = numCards;
-   }
+   }*/
 
    //takes card as parameter to check for out of bounds
    //THIS ONE IS NOT DONE needs to return cardError = true when k is out of bounds
    //this one just returns simple print statement
    public Card inspectCard(int k)
    {
+      Card invalidCard = new Card ('H', Card.Suit.CLUBS);
+      if(k > 312 || k < 0)
+      {
+         System.out.println("**illegal**");
+         return invalidCard;
+      }
+      if(cards[k] == null)
+         return invalidCard;
+      if(cards[k].cardError())
+         return invalidCard;
+      else
+         invalidCard.set('3',Card.Suit.HEARTS);
+      return invalidCard;
+   }
 
-         Boolean cardError = false;
+
+   /*Boolean cardError = false;
          if(k < 0 || k > numCards) 
          {
             System.out.println("out of bounds error");           
@@ -234,7 +256,7 @@ class Hand
          {
             return myCards[k];
          }
-   }
+   }*/
 
    //end of hand class
 }

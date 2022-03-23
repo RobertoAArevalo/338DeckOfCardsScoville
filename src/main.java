@@ -9,8 +9,6 @@ March 23, 2022
  */
 
 import java.util.*;
-import java.util.Objects;
-import java.lang.Math;
 
 //Start of main()
 public class main
@@ -64,7 +62,7 @@ class Card
          return "** illegal **";
       }
       else
-         return suit + " " + value;//
+         return value + " of " + suit;//
 
    }
 
@@ -74,10 +72,10 @@ class Card
       {
          this.value = value;
          this.suit = suit;
-         cardError = true;
+         cardError = false;
          return true;
       }
-      cardError = false;
+      cardError = true;
       return false;
    }
 
@@ -95,7 +93,7 @@ class Card
       return suit;
    }
 
-   public boolean cardError()
+   public boolean getCardError()
    {
       return cardError;
    }
@@ -107,7 +105,7 @@ class Card
    public boolean equals(Card otherCard)
    {
       if (suit == otherCard.getSuit() && value == otherCard.getValue() &&
-         cardError == otherCard.cardError())
+         cardError == otherCard.getCardError())
          return true;
       return false;
    }
@@ -242,11 +240,11 @@ class Hand
 }
 
 //Start of Deck class  - Ali/Richard?
-class Deck//going to contain outputs
+class Deck extends Hand//going to contain outputs
 {
    public static final int MAX_CARDS = 312;
    private static Card[] masterPack = new Card[52];
-   private static boolean cutRibbon = true;
+
 
    private Card[] cards;
    private int topCard;
@@ -290,6 +288,7 @@ class Deck//going to contain outputs
       if (index == 0)
       {
          return cards[index]; //not sure about this
+
          while (index > 0)
          {
             return cards[index];
@@ -331,11 +330,12 @@ class Deck//going to contain outputs
    private static void allocateMasterPack()
    {
       //some variables used in method
+      boolean cutRibbon = true;
       int r = 1; //r for rank
       Card.Suit suit;    
       
       //if cutRibbon is true method exits
-      if (!cutRibbon)
+      if (cutRibbon)
       {
          return;
       }  
@@ -352,13 +352,14 @@ class Deck//going to contain outputs
       //s is for suit
       //NEED TO SEND CHAR THROUGH 
       //THIS ONE IS NOT DONE
-      for(int s = 0, s < 4, s++)
+      for(int s = 0; s < 4; s++)
       {        
-         suit = Card.Suit.values()[s]   //use values() to pull enum values        
-         for(int i = 0, i < 13, i++)
+         suit = Card.Suit.values()[s];   //use values() to pull enum values
+
+         for(int i = 0; i < 13; i++)
          {
             masterPack[i] = new Card(suit, r);
-            r++
+            r++;
          }        
       }
       

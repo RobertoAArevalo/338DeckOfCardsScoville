@@ -350,6 +350,8 @@ class Deck//going to contain outputs
          
       // 2 nested loops to build the deck
       //s is for suit
+      //NEED TO SEND CHAR THROUGH 
+      //THIS ONE IS NOT DONE
       for(int s = 0, s < 4, s++)
       {        
          suit = Card.Suit.values()[s]   //use values() to pull enum values        

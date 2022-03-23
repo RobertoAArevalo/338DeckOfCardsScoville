@@ -3,8 +3,7 @@ public class CardTest
    public static void main (String[]args)
       {
          Card card1 = new Card('J', spades);
-         Card jacks;
-         jacks.Card();
+         Card jacks = new Card();
          System.out.println(card1);
          System.out.println(jacks);
 
@@ -12,7 +11,7 @@ public class CardTest
 
 
 
-   class Card
+   static class Card
    {
       //String str = "A","2","3","4","5","6","7","8","9","10",
       public enum Suit

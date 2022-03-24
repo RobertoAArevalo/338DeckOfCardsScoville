@@ -1,4 +1,8 @@
-public static void main(String[] args)
+public class anotherTest
+{
+   
+
+   public static void main(String[] args)
    {
       Card card1 = new Card();
       Card card2 = new Card('7', Card.Suit.CLUBS);
@@ -15,8 +19,6 @@ public static void main(String[] args)
       }
       
       System.out.println(uHand.toString());
-      
-    
       System.out.println(uHand.playCard());
       
       
@@ -85,10 +87,6 @@ public static void main(String[] args)
       {
          return this.value;
       }
-       /*public char setValue(char value)//mutators(setters)
-       {
-          this.value = value;
-       }*/
 
       public Suit getSuit()
       {
@@ -99,10 +97,6 @@ public static void main(String[] args)
       {
          return cardError;
       }
-       /*public boolean setSuit(Suit suit)//mutators(setters)
-       {
-          this.suit = suit;
-       }*/
 
       public boolean equals(Card otherCard)
       {
@@ -125,9 +119,7 @@ public static void main(String[] args)
          {
             return false;
          }
-
       }
-
    }
 
    //Start of Hand class - David
@@ -176,24 +168,15 @@ public static void main(String[] args)
       {
          Card holdCard = new Card();    
          
-         int index = 0;
-         
+         int index = getNumCards() - 1;   
          if (numCards == 0)
          {
             System.out.println("no more cards");
          }
       
-            holdCard = myCards[index];  
-            
-            //int j = 1 +1;
-            //Card[] temp = myCards[i];
-            //myCards[j] = myCards[i];
-            //myCards[i] = temp;
-     
-            return holdCard;
-            
-        
-         
+            holdCard = myCards[index];           
+            numCards--;           
+            return holdCard; 
       }
 
       //toString method to display hand
@@ -201,12 +184,9 @@ public static void main(String[] args)
       {
          String userHand = "Hand = ( ";
          for (int i = 0; i < numCards; i++)
-         {
-            
+         {          
                userHand = userHand + myCards[i];
-               userHand += ", ";
-
-          
+               userHand += ", ";        
          }
          userHand += " )";
          return userHand;
@@ -225,15 +205,9 @@ public static void main(String[] args)
          return numCards;
       }
 
-      //setter for numCards
-      /*public void setNumCards(int numCards)
-      {
-         this.numCards = numCards;
-      }*/
 
       //takes card as parameter to check for out of bounds
-      //THIS ONE IS NOT DONE needs to return cardError = true when k is out of bounds
-      //this one just returns simple print statement
+
       public Card inspectCard(int k)
       {
          Card invalidCard = new Card ('H', Card.Suit.CLUBS);

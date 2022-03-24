@@ -1,4 +1,4 @@
-/ public static void main(String[] args)
+public static void main(String[] args)
    {
       Card card1 = new Card();
       Card card2 = new Card('7', Card.Suit.CLUBS);
@@ -16,10 +16,9 @@
       
       System.out.println(uHand.toString());
       
-      for(int i = 0; i < 3; i++)
-      {
+    
       System.out.println(uHand.playCard());
-      }
+      
       
       
    }
@@ -175,20 +174,25 @@
       //this method returns last card of array or returns bad card error
       public Card playCard()
       {
-         Card holdCard = new Card();
+         Card holdCard = new Card();    
+         
          int index = 0;
-         index++;
+         
          if (numCards == 0)
          {
             System.out.println("no more cards");
          }
       
-            holdCard = myCards[index++];
-           
-          
-        
+            holdCard = myCards[index];  
+            
+            //int j = 1 +1;
+            //Card[] temp = myCards[i];
+            //myCards[j] = myCards[i];
+            //myCards[i] = temp;
+     
             return holdCard;
             
+        
          
       }
 
@@ -214,11 +218,6 @@
          return myCards;
       }
 
-      //seeter for array
-      /*public void setMyCards(Card[] myCards)
-      {
-         this.myCards = myCards;
-      }*/
 
       //getter for numCards
       public int getNumCards()

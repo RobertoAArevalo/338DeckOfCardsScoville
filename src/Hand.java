@@ -1,6 +1,4 @@
-public class anotherTest
-{
-   
+
 
    public static void main(String[] args)
    {

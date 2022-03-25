@@ -1,0 +1,263 @@
+import java.util.Random;
+
+
+public class DeckTest
+{
+   public static void main(String[] args)
+   {
+      Deck twopack = new Deck(2);
+      for (int i = 0; i < twopack.getTopCard(); i++)
+      {
+         System.out.println(twopack.dealCard());
+
+      }
+   }
+}
+
+class Card
+{
+   //String str = "A","2","3","4","5","6","7","8","9","10",
+   public enum Suit
+   {
+      //clubs, diamonds, hearts, spades;
+      //private char value;
+      //private Suit suit;
+      SPADES, HEARTS, DIAMONDS, CLUBS;
+
+   }
+
+   //private static final int MIN_RANK = 1;
+   //private static final int MAX_RANK = 13;
+
+   private char value;
+   private Suit suit;
+   private boolean cardError;
+
+   public Card(char value, Suit suit)
+   {
+      set(value, suit);
+   }
+
+   public Card()//default constructor
+   {
+      set('A', Suit.SPADES);
+   }
+
+   public Card(Card origCard)
+   {
+      set(origCard.value, origCard.suit);
+   }
+
+   public String toString()
+   {
+      if (cardError == true)
+      {
+         return "** illegal **";
+      }
+      else
+         return value + " of " + suit;//
+
+   }
+
+   public boolean set(char value, Suit suit)//mutator
+   {
+      if (isValid(value, suit) == true)
+      {
+         this.value = value;
+         this.suit = suit;
+         cardError = false;
+         return true;
+      }
+      cardError = true;
+      return false;
+   }
+
+   public char getValue()//accessors
+   {
+      return value;
+   }
+    /*public char setValue(char value)//mutators(setters)
+    {
+       this.value = value;
+    }*/
+
+   public Suit getSuit()
+   {
+      return suit;
+   }
+
+   public boolean getCardError()
+   {
+      return cardError;
+   }
+    /*public boolean setSuit(Suit suit)//mutators(setters)
+    {
+       this.suit = suit;
+    }*/
+
+   public boolean equals(Card otherCard)
+   {
+      if (suit == otherCard.getSuit() && value == otherCard.getValue() &&
+             cardError == otherCard.getCardError())
+         return true;
+      return false;
+   }
+
+   private boolean isValid(char value, Suit suit)
+   {
+      if ((value == '2') || (value == '3') || (value == '4') ||
+             (value == '5') || (value == '6') || (value == '7') || (value == '8') ||
+             (value == '9') || (value == 'T') || (value == 'J') || (value == 'Q') ||
+             (value == 'K') || (value == 'A'))
+      {
+         return true;
+      }
+      else
+      {
+         return false;
+      }
+
+   }
+
+}
+   class Deck //going to contain outputs
+   {
+      public static final int MAX_CARDS = 312;
+      private static Card[] masterPack = new Card[52];
+
+
+      private Card[] cards;
+      private int topCard;
+
+      public Deck(int numPacks)
+      {
+         cards = new Card[numPacks * 52];
+         allocateMasterPack();
+         init(numPacks);
+      }
+
+      public Deck()
+      {
+         int numPacks = 1;
+         cards = new Card[numPacks * 52];
+         init(numPacks);
+      }
+
+      public void init(int numPacks)
+      {
+         topCard = (numPacks * 52) - 1;
+         for (int i = 0; i <= topCard; i++)
+         {
+            cards[i] = masterPack[i % 52];
+            System.out.println(cards[i]);
+         }
+      }
+
+      public void shuffle()
+      {
+         int i = 0;
+         Random pullCard = new Random();
+         for (i = cards.length - 1; i > 0; i--)
+         {
+            int j = pullCard.nextInt(i + 1);
+            Card temp = cards[i];
+            cards[j] = cards[i];
+            cards[i] = temp;
+            //Card[] newCards = new Card[i];
+         }
+
+      }
+
+      public Card dealCard()
+      {
+         //int index = cards.length;
+
+         if (topCard == 0)
+         {
+            return new Card('X', Card.Suit.SPADES);
+         }
+         else
+         {
+            Card newCard = new Card(cards[topCard]);
+            topCard--;
+            return newCard;
+         }
+      }
+
+
+
+
+   public int getTopCard()
+   {
+      return topCard;
+   }
+
+   //same as the inspecCard class from hand
+   //but added the object copy if k is out of bounds
+   //returns true and object copy
+   public Card inspectCard(int k)
+   {
+      if(k < 0 || k > topCard)
+      {
+         System.out.println("out of bounds error");
+
+         return new Card('X', Card.Suit.SPADES);
+      }
+      else
+      {
+         return cards[k];
+      }
+   }
+
+   private static void allocateMasterPack()
+   {
+      //some variables used in method
+      //boolean cutRibbon = true;
+      int r = 2; //r for rank
+      Card.Suit suit;
+
+      //if cutRibbon is true method exits
+      if (masterPack[0] != null)
+      {
+
+         return;
+      }
+      // if masterPack is empty build it
+
+      masterPack = new Card[52];
+
+      // not empty do nothing
+
+      // 2 nested loops to build the deck
+      //s is for suit
+      //NEED TO SEND CHAR THROUGH
+      //THIS ONE IS NOT DONE
+      for(int s = 0; s < 4; s++)
+      {
+         suit = Card.Suit.values()[s];
+         r = 2; //use values() to pull enum values
+
+         for(int i = 0; i < 8; i++)
+         {
+            masterPack[i + 13*s] = new Card((char) (r +48), suit);
+            r++;
+//System.out.println(masterPack[i]);
+         }
+         masterPack[8 + 13*s] = new Card('T', suit);
+         masterPack[9 + 13*s] = new Card('J', suit);
+         masterPack[10 + 13*s] = new Card('Q', suit);
+         masterPack[11 + 13*s] = new Card('K', suit);
+         masterPack[12 + 13*s] = new Card('A', suit);
+
+
+      }
+
+      //loop for char value & loop for Suit suit
+
+
+
+
+   }
+
+   //end of deck class
+}

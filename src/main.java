@@ -10,9 +10,9 @@ March 23, 2022
 
 import java.util.*;
 
-//Start of main()
-public class main
+public class anotherTest
 {
+   
    //
    public static void main(String[] args)
    {
@@ -530,37 +530,11 @@ public class main
          masterPack[12 + 13*s] = new Card('A', suit);
       }
       //loop for char value & loop for Suit suit
-      
-      //end of deck class
    }
+   //end of deck class
+} 
    
-      }
-      
-      //loop for char value & loop for Suit suit
-      
-      
-      
-
-   }
    
-//end of deck class
-}
 
-//// Overloaded sum(). This sum takes two int parameters
-//    public int sum(int x, int y)
-//    {
-//        return (x + y);
-//    }
-//
-//    // Overloaded sum(). This sum takes three int parameters
-//    public int sum(int x, int y, int z)
-//    {
-//        return (x + y + z);
-//    }
-//
-//    // Overloaded sum(). This sum takes two double parameters
-//    public double sum(double x, double y)
-//    {
-//        return (x + y);
-//    }
+   
 

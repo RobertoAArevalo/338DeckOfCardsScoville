@@ -1,24 +1,34 @@
+public class anotherTest
+{
+   
 
    public static void main(String[] args)
    {
       Card card1 = new Card();
       Card card2 = new Card('7', Card.Suit.CLUBS);
-    
-      System.out.println(card1);
+      Card card3 = new Card('2', Card.Suit.HEARTS);
       
       Hand uHand = new Hand();
       
-      for(int i = 0; i < 8 ; i++)
+      for(int i = 0; i < 10 ; i++)
       {
          uHand.takeCard(card1);
          uHand.takeCard(card2);
+         uHand.takeCard(card3);
       
       }
       
       System.out.println(uHand.toString());
+      System.out.println("");
+      System.out.println("Now playing cards:");
+      
+      for(int p = 0; p < 31; p++)
+      {
       System.out.println(uHand.playCard());
+      }
       
       
+      System.out.println(uHand.toString());
       
    }
 
@@ -164,11 +174,14 @@
       public Card playCard()
       {
          Card holdCard = new Card();    
+         Card emptyCard = new Card();
          
          int index = getNumCards() - 1;   
          if (numCards == 0)
          {
             System.out.println("no more cards");
+            System.out.println("returning default card:");
+            return emptyCard;
          }
       
             holdCard = myCards[index];           

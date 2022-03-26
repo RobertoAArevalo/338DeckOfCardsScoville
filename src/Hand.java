@@ -70,15 +70,11 @@ public class BarcodeImage //implements BarcodeIO
      boolean sendPixel = false;
       
       if(row <MAX_HEIGHT && col < MAX_WIDTH) //ADDING IF STATEMENT TO CHECK IF ROW AND COL ARE GOOD
-      {
-         for(int r = row; r < MAX_HEIGHT; r++)
-         {
-            for(int c = col; c < MAX_WIDTH; c++)
-            {
-               sendPixel = imageData[r][c];
-            }
-         }
+      {    
+               sendPixel = imageData[row][col];        
       }
+      
+     return sendPixel;
       
      return sendPixel;
    }

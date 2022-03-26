@@ -27,6 +27,9 @@
    {
       int row = 0;
       int col = 0;
+     
+     //bottom right is MAX_HEIGHT - strData.length program spec asks for bottom left
+     //below is my guess for lower left
       int lowerLeft = MAX_WIDTH - strData.length; //may also be strData.length - MAX_HEIGHT
       for (int i = 0; i < strData.length; i++)
       {

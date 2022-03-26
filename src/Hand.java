@@ -30,7 +30,8 @@
      
      //bottom right is MAX_HEIGHT - strData.length program spec asks for bottom left
      //below is my guess for lower left
-      int lowerLeft = MAX_WIDTH - strData.length; //may also be strData.length - MAX_HEIGHT
+     //most left position in 2d array is [0][col]
+      int lowerLeft = 0; 
       for (int i = 0; i < strData.length; i++)
       {
   
@@ -38,12 +39,12 @@
          {
             if ( strData[row].charAt(col) == ' ')
             {
-               imageData[lowerLeft + row][col] = false;
+               imageData[lowerLeft][col] = false;
                col++;
             }
             else if ( strData[row].charAt(col) == '*')
             {
-               imageData[lowerLeft + row][col] = true;
+               imageData[lowerLeft][col] = true;
                col++;
             }
          }

@@ -72,6 +72,12 @@
       
      return getPixel;
    }
+    
+    //setter
+   void setPixel(int row, int col, boolean value)
+   {       
+     this.imageData[row][col] = value;
+   }
    
    //not sure about this one 
    public Object clone() throws CloneNotSupportedException

@@ -54,19 +54,19 @@
    }
    
     //getPixel method uses row and col int to return true or false from that coordinate
-    boolean getPixel(int row, int col)
+   boolean getPixel(int row, int col)
    {
      boolean getPixel = false;
       
       if(row <MAX_HEIGHT && col < MAX_WIDTH) //ADDING IF STATEMENT TO CHECK IF ROW AND COL ARE GOOD
       {
-     for(int r = row; r < MAX_HEIGHT; r++)
-     {
-        for(int c = col; c < MAX_WIDTH; c++)
-        {
-           getPixel = imageData[r][c];
-        }
-     }
+         for(int r = row; r < MAX_HEIGHT; r++)
+         {
+            for(int c = col; c < MAX_WIDTH; c++)
+            {
+               getPixel = imageData[r][c];
+            }
+         }
       }
       
      return getPixel;

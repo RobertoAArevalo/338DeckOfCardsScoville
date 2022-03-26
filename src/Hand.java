@@ -1,6 +1,17 @@
 
 
-  public class BarcodeImage 
+interface BarcodeIO
+{
+   public boolean scan(BarcodeImage bc);
+   public boolean readText(String text);
+   public boolean generateImageFromText();
+   public boolean translateImageToText();
+   public void displayTextToConsole();
+   public void displayImageToConsole();
+   }
+
+
+public class BarcodeImage //implements BarcodeIO
 {
    //final variables for dimensions of array
    public static final int MAX_HEIGHT = 30;
@@ -27,11 +38,7 @@
    {
       int row = 0;
       int col = 0;
-     
-     //bottom right is MAX_HEIGHT - strData.length program spec asks for bottom left
-     //below is my guess for lower left
-     //most left position in 2d array is [0][col]
-      int lowerLeft = 0; 
+      int lowerLeft = MAX_WIDTH - strData.length; //may also be strData.length - MAX_HEIGHT
       for (int i = 0; i < strData.length; i++)
       {
   
@@ -39,12 +46,12 @@
          {
             if ( strData[row].charAt(col) == ' ')
             {
-               imageData[lowerLeft][col] = false;
+               imageData[lowerLeft + row][col] = false;
                col++;
             }
             else if ( strData[row].charAt(col) == '*')
             {
-               imageData[lowerLeft][col] = true;
+               imageData[lowerLeft + row][col] = true;
                col++;
             }
          }
@@ -54,10 +61,9 @@
       //end of BarcodeImage(String[] strData) 
    }
    
-    //getPixel method uses row and col int to return true or false from that coordinate
    boolean getPixel(int row, int col)
    {
-     boolean getPixel = false;
+     boolean sendPixel = false;
       
       if(row <MAX_HEIGHT && col < MAX_WIDTH) //ADDING IF STATEMENT TO CHECK IF ROW AND COL ARE GOOD
       {
@@ -65,21 +71,20 @@
          {
             for(int c = col; c < MAX_WIDTH; c++)
             {
-               getPixel = imageData[r][c];
+               sendPixel = imageData[r][c];
             }
          }
       }
       
-     return getPixel;
+     return sendPixel;
    }
-    
-    //setter
+   
    void setPixel(int row, int col, boolean value)
    {       
      this.imageData[row][col] = value;
    }
    
-   //not sure about this one 
+   
    public Object clone() throws CloneNotSupportedException
    {
       return (Object)super.clone();

@@ -1,236 +1,66 @@
 
 
-   public static void main(String[] args)
+  public class BarcodeImage 
+{
+   //final variables for dimensions of array
+   public static final int MAX_HEIGHT = 30;
+   public static final int MAX_WIDTH = 65;
+   
+   private boolean[][] imageData;
+   
+   public BarcodeImage()
    {
-      Card card1 = new Card();
-      Card card2 = new Card('7', Card.Suit.CLUBS);
-      Card card3 = new Card('2', Card.Suit.HEARTS);
+      imageData = new boolean[MAX_HEIGHT][MAX_WIDTH];
       
-      Hand uHand = new Hand();
-      
-      for(int i = 0; i < 10 ; i++)
+      //nested for loop to instansiates 2d array with false
+      for(int r = 0; r < MAX_HEIGHT; r++)
       {
-         uHand.takeCard(card1);
-         uHand.takeCard(card2);
-         uHand.takeCard(card3);
-      
-      }
-      
-      System.out.println(uHand.toString());
-      System.out.println("");
-      System.out.println("Now playing cards:");
-      
-      for(int p = 0; p < 31; p++)
-      {
-      System.out.println(uHand.playCard());
-      }
-      
-      
-      System.out.println(uHand.toString());
-      
-   }
-
-   static class Card
-   {
-      
-      public enum Suit
-      {
-         //clubs, diamonds, hearts, spades;
-         //private char value;
-         //private Suit suit;
-         SPADES, HEARTS, DIAMONDS, CLUBS;
-
-      }
-
-      //private static final int MIN_RANK = 1;
-      //private static final int MAX_RANK = 13;
-
-      private char value;
-      private Suit suit;
-      private boolean cardError;
-
-      public Card(char value, Suit suit)
-      {
-         set(value, suit);
-      }
-
-      public Card()//default constructor
-      {
-         set('A', Suit.SPADES);
-      }
-
-      public Card(Card origCard)
-      {
-         set(origCard.value, origCard.suit);
-      }
-
-      public String toString()
-      {
-         if (cardError == true)
+         for(int c = 0; c < MAX_WIDTH; c++)
          {
-            return "** illegal **";
-         }
-         else
-            return value + " of " + suit;//
-
-      }
-
-      public boolean set(char value, Suit suit)//mutator
-      {
-         if (isValid(value, suit) == true)
-         {
-            this.value = value;
-            this.suit = suit;
-            cardError = false;
-            return true;
-         }
-         cardError = true;
-         return false;
-      }
-
-      public char getValue()//accessors
-      {
-         return this.value;
-      }
-
-      public Suit getSuit()
-      {
-         return this.suit;
-      }
-
-      public boolean getCardError()
-      {
-         return cardError;
-      }
-
-      public boolean equals(Card otherCard)
-      {
-         if (suit == otherCard.getSuit() && value == otherCard.getValue() &&
-            cardError == otherCard.getCardError())
-            return true;
-         return false;
-      }
-
-      private boolean isValid(char value, Suit suit)
-      {
-         if ((value == '2') || (value == '3') || (value == '4') ||
-            (value == '5') || (value == '6') || (value == '7') || (value == '8') ||
-            (value == '9') || (value == 'T') || (value == 'J') || (value == 'Q') ||
-            (value == 'K') || (value == 'A'))
-         {
-            return true;
-         }
-         else
-         {
-            return false;
+            imageData[r][c] = false;
          }
       }
    }
-
-   //Start of Hand class - David
-   static class Hand extends Card
+   
+   //takes in 1d string array and converts to 2d array boolean
+   public BarcodeImage(String[] strData) 
    {
-      //series of variables used
-      public final int MAX_CARDS = 75;  //range is from 50 - 100
-      private Card[] myCards;
-      private int numCards;
-
-      //initializes integer numCards and array myCards
-      public Hand()
+      int row = 0;
+      int col = 0;
+      int lowerLeft = MAX_WIDTH - strData.length; //may also be strData.length - MAX_HEIGHT
+      for (int i = 0; i < strData.length; i++)
       {
-         this.myCards = new Card[MAX_CARDS];
-         this.numCards = 0;
-        
-      }
-
-      //resets numCards and myCards by overwiting with initial values
-      public void resetHand()
-      {
-         this.myCards = new Card[MAX_CARDS];
-         this.numCards = 0;
-         
-      }
-
-      //adds a card to the array myCards
-      public boolean takeCard(Card card)
-      {
-         if (numCards >= MAX_CARDS)
+  
+         for (int z = 0; z < strData[i].length();z++)
          {
-            System.out.println("Error: Adding to a full array.");
-            return false;
+            if ( strData[row].charAt(col) == ' ')
+            {
+               imageData[lowerLeft + row][col] = false;
+               col++;
+            }
+            else if ( strData[row].charAt(col) == '*')
+            {
+               imageData[lowerLeft + row][col] = true;
+               col++;
+            }
          }
-         else
-         {
-            Card copy = new Card(card);
-            myCards[numCards] = copy;
-            numCards++;
-            return true;
-         }
+         row++;
+         col=0;
       }
-
-      //this method returns last card of array or returns bad card error
-      public Card playCard()
-      {
-         Card holdCard = new Card();    
-         Card emptyCard = new Card();
-         
-         int index = getNumCards() - 1;   
-         if (numCards == 0)
-         {
-            System.out.println("no more cards");
-            System.out.println("returning default card:");
-            return emptyCard;
-         }
-      
-            holdCard = myCards[index];           
-            numCards--;           
-            return holdCard; 
-      }
-
-      //toString method to display hand
-      public String toString()
-      {
-         String userHand = "Hand = ( ";
-         for (int i = 0; i < numCards; i++)
-         {          
-               userHand = userHand + myCards[i];
-               userHand += ", ";        
-         }
-         userHand += " )";
-         return userHand;
-      }
-
-      //getter for array
-      public Card[] getMyCards()
-      {
-         return myCards;
-      }
-
-
-      //getter for numCards
-      public int getNumCards()
-      {
-         return numCards;
-      }
-
-
-      //takes card as parameter to check for out of bounds
-
-      public Card inspectCard(int k)
-      {
-         Card invalidCard = new Card ('H', Card.Suit.CLUBS);
-         if(k > 312 || k < 0)
-         {
-            System.out.println("**illegal**");
-            return invalidCard;
-         }
-         if(myCards[k] == null)
-            return invalidCard;
-         if(myCards[k].getCardError())
-            return invalidCard;
-         else
-            invalidCard.set('3',Card.Suit.HEARTS);
-         return invalidCard;
-      }
-
+      //end of BarcodeImage(String[] strData) 
+   }
+   
+   boolean getPixel(int row, int col)
+   {
+      return 
+   }
+   
+   public Object clone() throws CloneNotSupportedException
+   {
+      return (Object)super.clone();
+   }
+   
+   
+//end of program   
+//last curly
 }

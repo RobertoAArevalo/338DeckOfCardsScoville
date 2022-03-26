@@ -38,7 +38,11 @@ public class BarcodeImage //implements BarcodeIO
    {
       int row = 0;
       int col = 0;
-      int lowerLeft = MAX_WIDTH - strData.length; //may also be strData.length - MAX_HEIGHT
+      
+      //bottom right of 2d array is MAX_HEIGHT - strData.length
+      //most left position in 2d array is [0][col]
+      //my guess for lower left is below
+      int lowerLeft = 0; 
       for (int i = 0; i < strData.length; i++)
       {
   
@@ -46,12 +50,12 @@ public class BarcodeImage //implements BarcodeIO
          {
             if ( strData[row].charAt(col) == ' ')
             {
-               imageData[lowerLeft + row][col] = false;
+               imageData[lowerLeft][col] = false;
                col++;
             }
             else if ( strData[row].charAt(col) == '*')
             {
-               imageData[lowerLeft + row][col] = true;
+               imageData[lowerLeft][col] = true;
                col++;
             }
          }

@@ -53,10 +53,18 @@
       //end of BarcodeImage(String[] strData) 
    }
    
-    //NEXT STEP STARTS HERE:
-   boolean getPixel(int row, int col)
+    //getPixel method uses row and col int to return true or false from that coordinate
+    boolean getPixel(int row, int col)
    {
-      return 
+     boolean getPixel = false;
+     for(int r = row; r < MAX_HEIGHT; r++)
+     {
+        for(int c = col; c < MAX_WIDTH; c++)
+        {
+           getPixel = imageData[r][c];
+        }
+     }
+     return getPixel;
    }
    
    //not sure about this one 

@@ -50,11 +50,13 @@
       //end of BarcodeImage(String[] strData) 
    }
    
+    //NEXT STEP STARTS HERE:
    boolean getPixel(int row, int col)
    {
       return 
    }
    
+   //not sure about this one 
    public Object clone() throws CloneNotSupportedException
    {
       return (Object)super.clone();
